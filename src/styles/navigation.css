@@ -3,13 +3,14 @@ a {
 }
 
 .navbar {
-    background: #4a90e2;
+    background: var(--color-nav);
     backdrop-filter: blur(15px);
-    padding: 1rem 0;
+    padding: 0.5rem 0;
     position: fixed;
+    align-items: center;
     top: .625rem;
     width: 100%;
-    min-height: 10vh;
+    max-height: 10vh;
     z-index: 1000;
     box-shadow: 0 8px 32px var(--color-shadow);
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
@@ -18,6 +19,7 @@ a {
 .nav-container {
     display: flex;
     justify-content: space-between;
+    margin-left: 100px;
     align-items: center;
     max-width: 1200px;
     margin: 0 auto;
@@ -25,17 +27,30 @@ a {
 }
 
 .logo {
-    display: flex;
-    align-items: center;
+  display: flex;
+  margin-right: 6.25rem;
+  align-items: center;
+  gap: 0.5rem; 
 }
 
 .logo img {
-    width: 6.25rem;
-    height: 6.25rem;
-    position: absolute;
-    left: 2.5%;
-    top: -5%;
+  width: 3.5rem;
+  height: auto;
+  position: relative;
 }
+
+.logo-text {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  opacity: 0;
+  line-height: 1;
+  transform: translateY(-10px);
+  animation: fadeInText 1.2s ease-out forwards;
+}
+
 
 .nav-menu {
     display: flex;
@@ -63,4 +78,50 @@ a {
     background: var(--bg-button);
     transform: translateY(-2px);
     box-shadow: 0 4px 15px var(--color-shadow);
+}
+
+.nav-item-dropdown {
+    position: relative;
+}
+
+.user-adm {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: var(--color-nav);
+    list-style: none;
+    padding: 0.5rem 0;
+    margin: 0;
+    display: none;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    border-radius: 6px;
+    z-index: 1001;
+}
+
+.user-adm li {
+    padding: 0.5rem 1rem;
+}
+
+.user-adm li a {
+    color: white;
+    text-decoration: none;
+    display: block;
+}
+
+.nav-item-dropdown:hover .user-adm {
+  display: block;
+}
+
+@keyframes fadeInText {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Ocultar en pantallas pequeñas */
+@media (max-width: 600px) {
+  .logo-text {
+    display: none;
+  }
 }
